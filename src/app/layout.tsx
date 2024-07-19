@@ -4,7 +4,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import { Raleway } from "next/font/google";
-// import getCurrentUser from "./(auth)/api/[...nextauth]/action/getCurrentUser";
+import AuthContext from "../../context/AuthContext";
+import getCurrentUser from "./(auth)/actions/getCurrentUser";
+import ToasterContext from "../../context/HotToastContest";
 
 
 
@@ -17,18 +19,23 @@ export const metadata: Metadata = {
   description: "E-commerce Website",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const user = await getCurrentUser();   user={user!}/
+  const user = await getCurrentUser();
+
   return (
     <html lang="en">
       
       <body className={raleway.className}>
-      <Navbar />
+        <AuthContext>
+          <ToasterContext />
+      <Navbar user={user!}/>
       {children}
+      
+      </AuthContext>
       </body>
     </html>
   );
