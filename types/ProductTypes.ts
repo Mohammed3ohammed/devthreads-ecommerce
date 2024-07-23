@@ -9,6 +9,6 @@ export interface ProductType {
     price_id?: string;
     currency?: any;
     decription? : string | null;
-    metadata? : String.Metadata;
+    metadata? : Stripe.Metadata;
     quantity? : number;
 }

@@ -7,6 +7,7 @@ import { Raleway } from "next/font/google";
 import AuthContext from "../../context/AuthContext";
 import getCurrentUser from "./(auth)/actions/getCurrentUser";
 import ToasterContext from "../../context/HotToastContest";
+import CarContext from "../../context/CartContext";
 
 
 
@@ -31,10 +32,11 @@ export default async function RootLayout({
       
       <body className={raleway.className}>
         <AuthContext>
+          <CarContext>
           <ToasterContext />
       <Navbar user={user!}/>
       {children}
-      
+      </CarContext>
       </AuthContext>
       </body>
     </html>
