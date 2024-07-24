@@ -6,6 +6,7 @@ import { useShoppingCart } from 'use-shopping-cart';
 import { redirect, useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import Button from "../../../../../components/ui/Button";
+import formatPrice from "../../../../../../utils/formatPrice";
 
 
 const CheckoutForm = ({clientSecret}: {clientSecret: string}) => {
@@ -83,7 +84,12 @@ useEffect(() => {
     <div>
           <form className="text-gray-600" onSubmit={handleSubmit}>
             <PaymentElement options={{layout : "tabs"}}  />
-            <h1 className="py-4 text-sm font-bold">{totalPrice}</h1>
+            <h1 className="py-4 text-sm font-bold">
+              
+              {
+              totalPrice !== undefined ? formatPrice(totalPrice) : null
+              }
+              </h1>
             <Button
             disabled={isLoading || !stripe || !elements}
             onClick={() =>  clearCart()}
