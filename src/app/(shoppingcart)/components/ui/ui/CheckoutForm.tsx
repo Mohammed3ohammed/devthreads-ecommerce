@@ -1,12 +1,11 @@
 "use client";
 import React, {useState , useEffect} from 'react'
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { useCheckoutStore } from '../../../../../../store/useChekoutStore';
 import { useShoppingCart } from 'use-shopping-cart';
-import { redirect, useRouter } from 'next/navigation';
-import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 import Button from "../../../../../components/ui/Button";
 import formatPrice from "../../../../../../utils/formatPrice";
+import { useCheckoutStore } from '../../../../../../store/useChekoutStore';
 
 
 const CheckoutForm = ({clientSecret}: {clientSecret: string}) => {
@@ -30,7 +29,7 @@ useEffect(() => {
     return;
   }
 
-}, [stripe]);
+}, [stripe, clientSecret]);
 
     useEffect(() => {
       async function fetchLatestOrderId() {

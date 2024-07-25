@@ -9,14 +9,14 @@ import toast from "react-hot-toast";
 import CheckoutForm from "./CheckoutForm";
 
 const stripePromise = loadStripe(
-  process.env.Next_PUPLIC_STRIPE_PLUBLISHABLE_KEY as string
+  process.env.Next_PUPLIC_STRIPE_PLUBLISHABLE_KEY  as string
 )
 
 
 const Checkout = ({items, totalPrice}: {totalPrice: number | undefined; items: ICarEntry[];}) => {
   const router = useRouter();
   const checkoutStore  = useCheckoutStore();
-  const [clientSecret, setclientSecret] = useState("");
+  const [clientSecret, setClientSecret] = useState("");
 
       useEffect (() => {
         const createOrder = async () => {
@@ -28,8 +28,8 @@ const Checkout = ({items, totalPrice}: {totalPrice: number | undefined; items: I
                 items: items,
                 payment_intent_id: checkoutStore.paymentIntent,
                 totalAmount: totalPrice
-              })
-            })
+              }),
+            });
               if(response.status === 403) {
                 toast.error("Please Sign In")
                 router.push("/sign-in")
@@ -42,7 +42,7 @@ const Checkout = ({items, totalPrice}: {totalPrice: number | undefined; items: I
               }
               const data = await response.json()
               if (data && data.paymentIntent) {
-                setclientSecret(data.paymentIntent.ckient_secret)
+                setClientSecret(data.paymentIntent.ckient_secret)
                 checkoutStore.setPaymentIntent(data.paymentIntent.id)
               } else {
                   console.error("unexpected data structure", data)
@@ -52,7 +52,7 @@ const Checkout = ({items, totalPrice}: {totalPrice: number | undefined; items: I
           }
         };
         createOrder();
-      }, []); 
+      }, [items, totalPrice, checkoutStore, router]); 
 
       const options:  StripeElementsOptions = {
         clientSecret,

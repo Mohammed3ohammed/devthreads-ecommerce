@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
 
     try {
         const updatedOrder = await prisma.order.update({
-            where: {id: orderId}
+            where: {id: orderId},
             data: {status: status}
         })
         return NextResponse.json({updatedOrder}) 
