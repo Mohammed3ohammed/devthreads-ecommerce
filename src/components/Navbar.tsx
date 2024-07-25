@@ -63,7 +63,6 @@ const userMenuHandler = () => {
             {openMobileMenu ? <MdClose /> : <FiMenu />}
           </div>
         </div>
-            {/* Menu */}
             {openUserMenu && (
               <div className="z-10 absolute right-0 top-[40px] w-28 bg-gray-700 shadow-md rounded-md p-4 text-white max-md:hidden text-center">
                 {!user ? (
@@ -92,7 +91,6 @@ const userMenuHandler = () => {
             )}
       </div>
 
-      {/* Menu */}
 
       {
         openMobileMenu && (

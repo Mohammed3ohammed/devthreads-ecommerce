@@ -14,7 +14,7 @@ import img0 from "../../public/payment-getways.png";
 
 const  Footer = () => {
   return (
-    <div  className="w-full py-5 bg-gray-900 mt-10">
+    <footer  className="w-full py-5 bg-gray-900 mt-10">
     <div className="main-container">
         <div className="py-5 mb-5 border-b border-gray-300 border-opacity-20 flex justify-between items-center max-md:flex-col max-md:gap-8">
         <div className="flex flex-1 gap-1 items-center text-xl font-medium text-white">
@@ -23,8 +23,8 @@ const  Footer = () => {
         </div>
         <ul className="flex items-center justify-center gap-16 flex-1 text-white max-md:flex-col max-md:gap-5">
                 {
-                    mainLinks.map((link , id) => (
-                        <Link key={id} href={link.route}>
+                    mainLinks.map((link , index) => (
+                        <Link key={index} href={link.route}>
                             <li>{link.label}</li>
                         </Link>
                     ))}
@@ -48,7 +48,7 @@ const  Footer = () => {
                     />
             </div>
     </div>
-    </div>
+    </footer>
 );
 };
 
