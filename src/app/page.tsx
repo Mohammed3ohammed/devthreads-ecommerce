@@ -1,7 +1,7 @@
 import Banner from "@/components/Banner";
-import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Info from "@/components/Info";
+import NewProducts from "@/components/NewProducts";
 import TopProducts from "@/components/TopProducts";
 
 const  Home = () => {
@@ -11,7 +11,7 @@ const  Home = () => {
       <Info />
       <TopProducts />
       <Banner />
-      <Footer />
+      <NewProducts />
  </>
   )
 }
