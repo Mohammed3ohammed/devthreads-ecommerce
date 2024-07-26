@@ -1,12 +1,12 @@
 "use client";
 import Image from 'next/image';
-import { useShoppingCart } from 'use-shopping-cart';
-import { useCheckoutStore } from '../../../../../../store/useChekoutStore';
 import Checkout from './Checkout';
 import Button from '@/components/ui/Button';
 import { IoMdAdd } from 'react-icons/io';
 import { FiMinus } from 'react-icons/fi';
 import formatPrice from "../../../../../../utils/formatPrice";
+import { useShoppingCart } from 'use-shopping-cart';
+import { useCheckoutStore } from '../../../../../../store/useChekoutStore';
 
 const Cart = () => {
 
@@ -42,7 +42,7 @@ const Cart = () => {
             {
                 checkoutStore.onCheckout === "cart" && (
                     <ul>
-                        {
+                        { 
                             items.map((item) => (
                                 <li key={item.id} className='flex py-6'>
                                     <div className="h-24 w-24 flex justify-center items-center overflow-hidden rounded-md border border-gray-200">
@@ -65,7 +65,7 @@ const Cart = () => {
                                                 <p className='ml-4'>{item.formattedValue}</p>
                                             </div>
                                         </div>
-                                        <div className="glex gap-5 mt-3">
+                                        <div className="flex gap-5 mt-3">
                                             <button 
                                             onClick={() => 
                                                 decrementItem(item.id, {
@@ -77,7 +77,7 @@ const Cart = () => {
                                             </button>
                                             <button 
                                             onClick={() => 
-                                                decrementItem(item.id, {
+                                                incrementItem(item.id, {
                                                     count: 1
                             })
                         }
