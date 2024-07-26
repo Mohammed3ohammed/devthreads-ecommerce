@@ -16,7 +16,7 @@ const SignInForm = () => {
         const handelSubmit = async (e: React.FormEvent) => {
             e.preventDefault()
 
-            const formData = new FormData(FormRef.current!)
+            const formData = new FormData(formRef.current!)
             const email = formData.get("email") as string
             const password = formData.get("password") as string
 
