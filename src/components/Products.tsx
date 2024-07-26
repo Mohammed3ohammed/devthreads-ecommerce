@@ -1,9 +1,8 @@
 "use client";
 import { useState } from "react";
-import ProductsCard from "./NewProducts";
+
 import { ProductType } from "../../types/ProductTypes";
-
-
+import ProductsCard from "./ProductsCard";
 
 
 
@@ -56,9 +55,9 @@ return (
                   {
                     sortedProducts.map((product) => (
                       <ProductsCard
-                       key={product.id}
-                       product={product}
-                       />
+                      key={product.id}
+                      product={product}
+                      />
                     ))
                   }
                 </div>
